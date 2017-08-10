@@ -6,7 +6,9 @@ public class Sorting {
       int n = array.length;
       T temp;
       long start = System.currentTimeMillis();
+      //repeat for each element of array
       for (int i = 0; i < n; i++) {
+         //at each iteration one element moves to the sorted right side of array
          for (int j = 0; j < n - i - 1; j++) {
             if (array[j].compareTo(array[j + 1]) > 0) {
                temp = array[j];
@@ -26,6 +28,7 @@ public class Sorting {
          return;
       }
       for (int i = 1; i < array.length; i++) {
+         //at each iteration get current value of array and move it to the left part until it is less than its left neighbour
          for (int j = i; j > 0; j--) {
             if (array[j].compareTo(array[j - 1]) < 0) {
                temp = array[j - 1];

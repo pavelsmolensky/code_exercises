@@ -14,14 +14,19 @@ public class Search {
     int mid = high / 2;
 
     while (high >= low) {
+      //check middle element of array
       if (input[mid].compareTo(target) == 0) {
         return mid;
       }
+      // target is greater than middle element => continue search in the RIGHT half of array
       if (target.compareTo(input[mid]) > 0) {
         low = mid + 1;
-      } else {
+      }
+      // target is less than middle element => continue search in the LEFT half of array
+      else {
         high = mid - 1;
       }
+      //recalculate new middle position
       mid = low + (high - low) / 2;
     }
     return -1;
@@ -42,6 +47,7 @@ public class Search {
     System.out.println("Lookup range: " + low + ", " + high);
 
     int mid = low + (high - low) / 2;
+     //check middle element of array
     if (array[mid].compareTo(target) == 0) {
       System.out.println("Found at index: " + mid);
       return mid;
@@ -52,8 +58,10 @@ public class Search {
     }
 
     if (target.compareTo(array[mid]) > 0) {
+       // target is greater than middle element => continue search in the RIGHT half of array
       return binaryRec(mid + 1, high, array, target);
     } else {
+       // target is less than middle element => continue search in the LEFT half of array
       return binaryRec(low, mid - 1, array, target);
     }
   }
