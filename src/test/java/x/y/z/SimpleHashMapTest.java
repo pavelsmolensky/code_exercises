@@ -5,6 +5,8 @@ import java.util.HashMap;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+import x.y.z.datastructure.SimpleHashMap;
+
 public class SimpleHashMapTest {
   @Test
   public void test() {

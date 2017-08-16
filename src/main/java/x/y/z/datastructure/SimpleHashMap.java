@@ -1,4 +1,4 @@
-package x.y.z;
+package x.y.z.datastructure;
 
 /**
  * Basic implementation of HashMap with only 2 methods

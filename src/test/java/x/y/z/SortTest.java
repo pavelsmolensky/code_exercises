@@ -10,7 +10,6 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 public class SortTest {
-
    @Test(dataProvider = "sortings")
    public void sortRandomArray(Consumer<Integer[]> sortingFunction) {
       Integer[] toSort = createRandomIntArray(10);
@@ -68,6 +67,7 @@ public class SortTest {
       return new Object[][] {
             { (Consumer<Integer[]>) Sorting::insertionSort },
             { (Consumer<Integer[]>) Sorting::bubbleSort },
-            { (Consumer<Integer[]>) Sorting.MergeSort::mergeSort } };
+            { (Consumer<Integer[]>) Sorting.MergeSort::mergeSort },
+            { (Consumer<Integer[]>) Sorting::selectionSort } };
    }
 }

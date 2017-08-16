@@ -28,7 +28,7 @@ public class Sorting {
          return;
       }
       for (int i = 1; i < array.length; i++) {
-         //at each iteration get current value of array and move it to the left part until it is less than its left neighbour
+         //at each iteration get current value of array and move it to the left part till it is less than its left neighbour
          for (int j = i; j > 0; j--) {
             if (array[j].compareTo(array[j - 1]) < 0) {
                temp = array[j - 1];
@@ -43,6 +43,27 @@ public class Sorting {
    }
    //-----------
 
+   public static <T extends Comparable<T>> void selectionSort(T[] array) {
+      long start = System.currentTimeMillis();
+      for (int i = 0; i < array.length - 1; i++) {
+         int smallestIndex = i;
+         T smallestValue = array[i];
+         for (int j = i + 1; j < array.length; j++) {
+            if (array[j].compareTo(smallestValue) < 0) {
+               smallestIndex = j;
+               smallestValue = array[j];
+            }
+         }
+         T temp = array[i];
+         array[i] = array[smallestIndex];
+         array[smallestIndex] = temp;
+
+      }
+      System.out.println("SelectionSort. Elapsed time (ms): " + (System.currentTimeMillis() - start));
+   }
+
+   //-----------
+
    static class MergeSort {
       private static Comparable[] tempArray;
 
@@ -54,10 +75,14 @@ public class Sorting {
       }
 
       private static void mergeSort(Comparable[] array, int low, int high) {
+         //until 2-elements range is left
          if (low < high) {
             int mid = low + (high - low) / 2;
+            //do the same for left part of array
             mergeSort(array, low, mid);
+            //do the same for right part of array
             mergeSort(array, mid + 1, high);
+            //merge 2 already sorted parts of array
             merge(array, low, mid, high);
          }
       }
@@ -72,10 +97,8 @@ public class Sorting {
 
          for (int k = low; k <= high; k++) {
             if (leftIndex > mid) {
-               array[k] = tempArray[rightIndex++];
-            } else if (rightIndex > high) {
-               array[k] = tempArray[leftIndex++];
-            } else if (tempArray[leftIndex].compareTo(tempArray[rightIndex]) < 0) {
+               break;
+            } else if (rightIndex > high || tempArray[leftIndex].compareTo(tempArray[rightIndex]) < 0) {
                array[k] = tempArray[leftIndex++];
             } else {
                array[k] = tempArray[rightIndex++];
