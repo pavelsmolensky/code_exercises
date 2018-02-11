@@ -1,30 +1,31 @@
 package x.y.z;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-/**
- * Created by PS89152 on 03-08-2017.
- */
-public class StringsIsUniqueTest {
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-   @Test
-   public void notUnique() {
-      Assert.assertFalse(Strings.isUnique("abcda"));
-   }
+class StringsIsUniqueTest {
 
-   @Test
-   public void unique() {
-      Assert.assertFalse(Strings.isUnique("abcd"));
-   }
+  @Test
+  void notUnique() {
+    assertFalse(Strings.isUnique("abcda"));
+  }
 
-   @Test
-   public void emptyString() {
-      Assert.assertTrue(Strings.isUnique(""));
-   }
+  @Test
+  void unique() {
+    assertFalse(Strings.isUnique("abcd"));
+  }
 
-   @Test(expectedExceptions = AssertionError.class)
-   public void nullString() {
-      Assert.assertTrue(Strings.isUnique(null));
-   }
+  @Test
+  void emptyString() {
+    assertTrue(Strings.isUnique(""));
+  }
+
+  @Test
+//TODO
+  void nullString() {
+    assertThrows(AssertionError.class, () -> Strings.isUnique(null));
+  }
 }

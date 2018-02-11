@@ -1,15 +1,15 @@
 package x.y.z;
 
-import java.util.HashMap;
-
-import org.testng.Assert;
-import org.testng.annotations.Test;
-
+import org.junit.jupiter.api.Test;
 import x.y.z.datastructure.SimpleHashMap;
 
-public class SimpleHashMapTest {
+import java.util.HashMap;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
+class SimpleHashMapTest {
   @Test
-  public void test() {
+  void test() {
     SimpleHashMap<String, Integer> map = new SimpleHashMap<>();
     HashMap<String, Integer> originalMap = new HashMap<>();
 
@@ -39,7 +39,7 @@ public class SimpleHashMapTest {
       actual.append(map.get(String.valueOf(i))).append(" ");
       original.append(originalMap.get(String.valueOf(i))).append(" ");
     }
-    Assert.assertEquals(actual.toString(), original.toString());
+    assertEquals(actual.toString(), original.toString());
     //TODO
   }
 }

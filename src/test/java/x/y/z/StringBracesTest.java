@@ -1,28 +1,31 @@
 package x.y.z;
 
-import org.testng.Assert;
-import org.testng.annotations.Test;
+import org.junit.jupiter.api.Test;
 
-public class StringBracesTest {
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
-   @Test
-   public void testPositive(){
-      Assert.assertTrue(Strings.areBracesInValidOrder("{a(  b{ c()})}"));
-      Assert.assertTrue(Strings.areBracesInValidOrder("(( ((a bc)) ))"));
-      Assert.assertTrue(Strings.areBracesInValidOrder("({ ({( {(abc)} )}   )}) {}{{ x}}(({ y} ))"));
-      Assert.assertTrue(Strings.areBracesInValidOrder("()"));
-      Assert.assertTrue(Strings.areBracesInValidOrder(""));
-   }
-   @Test
-   public void testNegative(){
-      Assert.assertFalse(Strings.areBracesInValidOrder("{"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("}"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("((}}"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("(()"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("{{}"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("{a(  b{ c())}"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("(( ((a bc)))"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("({ ({( {(abc)} )}   )} {}{{ x}}(({ y} ))"));
-      Assert.assertFalse(Strings.areBracesInValidOrder("({)}"));
-   }
+class StringBracesTest {
+
+  @Test
+  void testPositive() {
+    assertTrue(Strings.areBracesInValidOrder("{a(  b{ c()})}"));
+    assertTrue(Strings.areBracesInValidOrder("(( ((a bc)) ))"));
+    assertTrue(Strings.areBracesInValidOrder("({ ({( {(abc)} )}   )}) {}{{ x}}(({ y} ))"));
+    assertTrue(Strings.areBracesInValidOrder("()"));
+    assertTrue(Strings.areBracesInValidOrder(""));
+  }
+
+  @Test
+  void testNegative() {
+    assertFalse(Strings.areBracesInValidOrder("{"));
+    assertFalse(Strings.areBracesInValidOrder("}"));
+    assertFalse(Strings.areBracesInValidOrder("((}}"));
+    assertFalse(Strings.areBracesInValidOrder("(()"));
+    assertFalse(Strings.areBracesInValidOrder("{{}"));
+    assertFalse(Strings.areBracesInValidOrder("{a(  b{ c())}"));
+    assertFalse(Strings.areBracesInValidOrder("(( ((a bc)))"));
+    assertFalse(Strings.areBracesInValidOrder("({ ({( {(abc)} )}   )} {}{{ x}}(({ y} ))"));
+    assertFalse(Strings.areBracesInValidOrder("({)}"));
+  }
 }
